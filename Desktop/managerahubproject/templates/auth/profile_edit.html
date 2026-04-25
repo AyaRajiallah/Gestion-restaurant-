@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}Completer le profil | ManageraHub{% endblock %}
+
+{% block content %}
+<div class="auth-shell">
+    {% comment %}Cette barre laisse revenir au portail ou a l'accueil rapidement.{% endcomment %}
+    <div class="auth-topbar">
+        <a href="{% url 'auth_portal' %}" class="pill-link">Retour au portail</a>
+        <a href="{% url 'home' %}" class="pill-link pill-link--accent">Accueil</a>
+    </div>
+
+    <div class="auth-grid">
+        {% comment %}Ce panneau permet au candidat de completer ses informations apres connexion.{% endcomment %}
+        <section class="panel">
+            <p class="kicker">espace candidat</p>
+            <h1>Completer mon profil</h1>
+            <p>Ajoutez ou modifiez ici les informations non essentielles qui n'apparaissent plus au moment du sign up.</p>
+
+            {% if form.non_field_errors %}
+                <div class="alert alert--error">{{ form.non_field_errors|join:", " }}</div>
+            {% endif %}
+
+            <form method="post" enctype="multipart/form-data" class="form-stack">
+                {% csrf_token %}
+
+                <div class="form-grid">
+                    <label class="field">
+                        <span>Telephone</span>
+                        {{ form.phone }}
+                    </label>
+                    <label class="field">
+                        <span>Rattachement</span>
+                        {{ form.attachment_label }}
+                    </label>
+                    <label class="field">
+                        <span>Date de naissance</span>
+                        {{ form.birth_date }}
+                    </label>
+                    <label class="field">
+                        <span>Diplome</span>
+                        {{ form.diploma }}
+                    </label>
+                    <label class="field">
+                        <span>Annee d'obtention</span>
+                        {{ form.graduation_year }}
+                    </label>
+                    <label class="field">
+                        <span>Filiere</span>
+                        {{ form.field_of_study }}
+                    </label>
+                    <label class="field">
+                        <span>Ville d'obtention du diplome</span>
+                        {{ form.graduation_city }}
+                    </label>
+                </div>
+
+                <div class="form-grid">
+                    <label class="field upload-field">
+                        <span>CV du candidat</span>
+                        {{ form.cv_document }}
+                    </label>
+                    <label class="field upload-field">
+                        <span>Lettre de motivation</span>
+                        {{ form.motivation_letter }}
+                    </label>
+                </div>
+
+                <label class="field">
+                    <span>But du candidat</span>
+                    {{ form.goal }}
+                </label>
+
+                <button type="submit" class="button-primary button-primary--block">Enregistrer les modifications</button>
+            </form>
+        </section>
+
+        {% comment %}Ce panneau rappelle ce qui a ete deplace apres la connexion.{% endcomment %}
+        <aside class="panel panel--soft">
+            <div class="note-card">
+                <strong>Infos non essentielles</strong>
+                <span>Ces informations sont volontairement deplacees apres le login pour simplifier l'inscription.</span>
+            </div>
+            <div class="note-card">
+                <strong>Documents</strong>
+                <span>Vous pouvez aussi ajouter ou remplacer votre CV et votre lettre de motivation ici.</span>
+            </div>
+            <div class="note-card">
+                <strong>Profil editable</strong>
+                <span>Le candidat peut revenir autant de fois qu'il le souhaite pour mettre a jour son profil.</span>
+            </div>
+        </aside>
+    </div>
+</div>
+{% endblock %}

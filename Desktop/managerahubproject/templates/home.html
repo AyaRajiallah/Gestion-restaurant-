@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title %}Accueil | ManageraHub{% endblock %}
+
+{% block content %}
+<div class="layout-shell">
+    {% comment %}Cette barre haute presente les liens principaux du site.{% endcomment %}
+    <nav class="site-nav site-nav--glassy">
+        <div class="site-nav__links">
+            <a href="#presentation">Presentation</a>
+            <a href="#actors">Acteurs</a>
+            <a href="#explore">Explorer</a>
+            <a href="{% url 'login' %}" class="site-nav__cta">Login</a>
+        </div>
+    </nav>
+
+    {% comment %}Cette section hero explique rapidement le role de la plateforme.{% endcomment %}
+    <header class="hero-card">
+        <div class="hero-copy">
+            <p class="kicker">Plateforme de recrutement</p>
+            <h1>ManageraHub relie les candidats, les entreprises et l'administration dans un meme portail.</h1>
+            <p>
+                La reconstruction Django garde le meme objectif que le site de reference:
+                inscrire le candidat, connecter les utilisateurs et suivre l'avancement du recrutement.
+            </p>
+            <div class="action-row">
+                <a href="{% url 'signup' %}" class="button-primary">Sign up candidat</a>
+                <a href="{% url 'login' %}" class="button-secondary">Acceder au portail</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="visual-card">
+                <strong>Espace candidat</strong>
+                <span>Inscription publique avec CV, objectif et suivi de candidature.</span>
+            </div>
+            <div class="visual-card">
+                <strong>Espace entreprise</strong>
+                <span>Compte cree par l'administrateur uniquement.</span>
+            </div>
+            <div class="visual-card">
+                <strong>Espace admin</strong>
+                <span>Supervision des comptes, entreprises et activite globale.</span>
+            </div>
+        </div>
+    </header>
+
+    {% comment %}Cette section resume les acteurs de la plateforme.{% endcomment %}
+    <section id="actors" class="content-card">
+        <p class="kicker">Acteurs</p>
+        <h2>Chaque espace garde son role metier</h2>
+        <div class="card-grid">
+            <article class="info-card">
+                <h3>Candidat</h3>
+                <p>Creation de profil, depot de CV, connexion au portail et suivi du parcours.</p>
+            </article>
+            <article class="info-card">
+                <h3>Entreprise</h3>
+                <p>Compte gere par l'admin pour publier les besoins et consulter les candidatures.</p>
+            </article>
+            <article class="info-card">
+                <h3>Administrateur</h3>
+                <p>Pilotage global, creation des comptes entreprise et vue sur les utilisateurs recents.</p>
+            </article>
+        </div>
+    </section>
+
+    {% comment %}Cette section rappelle que l'inscription entreprise publique est retiree.{% endcomment %}
+    <section id="explore" class="content-card">
+        <p class="kicker">Explorer</p>
+        <h2>Deux acces publics simples et coherents</h2>
+        <div class="card-grid card-grid--two">
+            <article class="choice-card">
+                <h3>Inscription candidat</h3>
+                <p>Le formulaire public est reserve au candidat avec les informations utiles seulement.</p>
+                <a href="{% url 'signup' %}" class="button-primary button-primary--small">Creer un compte</a>
+            </article>
+            <article class="choice-card">
+                <h3>Connexion entreprise ou admin</h3>
+                <p>L'entreprise ne s'inscrit plus elle-meme. L'administrateur cree d'abord son compte.</p>
+                <a href="{% url 'login' %}" class="button-secondary button-secondary--small">Se connecter</a>
+            </article>
+        </div>
+    </section>
+</div>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Login | ManageraHub{% endblock %}
+
+{% block content %}
+<div class="auth-shell auth-shell--narrow">
+    {% comment %}Cette barre offre un retour rapide vers l'accueil ou l'inscription candidat.{% endcomment %}
+    <div class="auth-topbar">
+        <a href="{% url 'home' %}" class="pill-link">Retour a l'accueil</a>
+        <a href="{% url 'signup' %}" class="pill-link pill-link--accent">Sign up candidat</a>
+    </div>
+
+    <div class="auth-grid auth-grid--login">
+        {% comment %}Ce panneau centralise la connexion pour candidat, entreprise et administrateur.{% endcomment %}
+        <section class="panel">
+            <p class="kicker">ManageraHub</p>
+            <h1>Log in</h1>
+            <p>Connectez-vous a votre espace candidat, entreprise ou administrateur.</p>
+
+            {% if form.errors %}
+                <div class="alert alert--error">Les informations de connexion sont incorrectes.</div>
+            {% endif %}
+
+            <form method="post" class="form-stack">
+                {% csrf_token %}
+                <label class="field">
+                    <span>E-mail</span>
+                    {{ form.username }}
+                </label>
+                <label class="field">
+                    <span>Mot de passe</span>
+                    {{ form.password }}
+                </label>
+                <div class="inline-row">
+                    <label class="checkbox-row">
+                        <input type="checkbox" name="remember_me">
+                        <span>Remember me</span>
+                    </label>
+                    <a href="{% url 'password_request' %}" class="text-link">Mot de passe oublie ?</a>
+                </div>
+                <button type="submit" class="button-primary button-primary--block">Se connecter</button>
+            </form>
+        </section>
+
+        {% comment %}Ce panneau retire la photo et garde les rappels fonctionnels du site.{% endcomment %}
+        <aside class="panel panel--soft">
+            <div class="note-card">
+                <strong>Admin ready</strong>
+                <span>L'email `ayarajiallah@gmail.com` reste promu administrateur automatiquement.</span>
+            </div>
+            <div class="note-card">
+                <strong>Entreprise</strong>
+                <span>Le compte entreprise se connecte ici apres creation par l'admin.</span>
+            </div>
+            <div class="note-card">
+                <strong>Suivi</strong>
+                <span>Le candidat retrouve ensuite la timeline verticale de sa candidature.</span>
+            </div>
+        </aside>
+    </div>
+</div>
+{% endblock %}
