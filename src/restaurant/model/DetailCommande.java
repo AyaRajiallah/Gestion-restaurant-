@@ -1,6 +1,6 @@
 package restaurant.model;
 
-public class DetailCommande {
+public class DetailCommande implements Affichable {
     private int idDetail;
     private int idCommande;
     private int idPlat;
@@ -62,5 +62,10 @@ public class DetailCommande {
     @Override
     public String toString() {
         return "DetailCommande [idDetail=" + idDetail + ", idCommande=" + idCommande + ", idPlat=" + idPlat + ", quantite=" + quantite + ", prixUnitaire=" + prixUnitaire + "]";
+    }
+
+    @Override
+    public void afficherDetails() {
+        System.out.println(toString());
     }
 }

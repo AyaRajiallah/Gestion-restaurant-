@@ -8,10 +8,15 @@ public class Cuisinier extends Employe {
 
     @Override
     public void travailler() {
-        System.out.println("Le cuisinier prépare les plats");
+        System.out.println("Le cuisinier prepare les plats");
+    }
+
+    @Override
+    public void afficherDetails() {
+        System.out.println("Cuisinier [id=" + id + ", nom=" + nom + "]");
     }
 
     public void preparerPlat() {
-        System.out.println("Plat préparé");
+        System.out.println("Plat prepare");
     }
 }

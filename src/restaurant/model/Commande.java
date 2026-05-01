@@ -3,7 +3,7 @@ package restaurant.model;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Commande {
+public class Commande implements Affichable {
  private int idCommande;
     private Date date;
     private ArrayList<Plat> plats;
@@ -71,5 +71,10 @@ public class Commande {
             p.afficherPlat();
         }
         System.out.println("Total = " + calculerTotal());
+    }
+
+    @Override
+    public void afficherDetails() {
+        afficherCommande();
     }
 }

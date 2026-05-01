@@ -1,6 +1,6 @@
 package restaurant.model;
 
-public abstract class Employe  {
+public abstract class Employe implements Affichable {
   protected int id;
     protected String nom;
 

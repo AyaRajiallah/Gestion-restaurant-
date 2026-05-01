@@ -1,6 +1,6 @@
 package restaurant.model;
 
-public class Plat {
+public class Plat implements Affichable {
     private int idPlat;
     private String nom;
     private double prix;
@@ -79,6 +79,11 @@ public class Plat {
 
     public void afficherPlat() {
         System.out.println(nom + " (" + categorie + ") : " + prix + " DH");
+    }
+
+    @Override
+    public void afficherDetails() {
+        afficherPlat();
     }
 }
 
